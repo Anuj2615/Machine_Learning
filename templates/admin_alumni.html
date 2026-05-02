@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <h2>Alumni Admin Panel</h2>
+    <form method="post" enctype="multipart/form-data" class="form">
+        <label>Alumni Name</label>
+        <input type="text" name="name" required />
+
+        <label>Passing Year</label>
+        <input type="number" name="passing_year" required />
+
+        <label>Photo</label>
+        <input type="file" name="photo" accept="image/*" required />
+
+        <button type="submit">Upload Alumni Data</button>
+    </form>
+</section>
+
+<section>
+    <h3>Uploaded Alumni</h3>
+    <div class="alumni-grid">
+        {% for person in alumni_list %}
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/alumni/' + person.photo_filename) }}" alt="{{ person.name }}" />
+                <h4>{{ person.name }}</h4>
+                <p>{{ person.passing_year }}</p>
+            </div>
+        {% else %}
+            <p>No alumni uploaded yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

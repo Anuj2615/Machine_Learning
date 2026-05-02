@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <h2>Verify OTP</h2>
+    <p>Enter OTP sent to {{ pending.mobile }} for {{ pending.name }}.</p>
+    <form method="post" class="form">
+        <label>OTP</label>
+        <input type="text" name="otp" maxlength="6" required />
+        <button type="submit">Verify & Submit</button>
+    </form>
+</section>
+{% endblock %}
